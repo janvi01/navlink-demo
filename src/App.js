@@ -1,23 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Route, Routes, NavLink } from "react-router-dom";
+import About from "./About";
+import Contact from "./Contact";
+import Home from "./Home";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      <div className="nav">
+        <NavLink
+          to="home"
+          style={({ isActive }) => ({
+            backgroundColor: isActive ? "blue" : "black",
+          })}
+          className="navitem"
         >
-          Learn React
-        </a>
-      </header>
+          Home
+        </NavLink>
+        <NavLink
+          to="about"
+          style={({ isActive }) => ({
+            backgroundColor: isActive ? "blue" : "black",
+          })}
+          className="navitem"
+        >
+          About
+        </NavLink>
+        <NavLink
+          to="contact"
+          style={({ isActive }) => ({
+            backgroundColor: isActive ? "blue" : "black",
+          })}
+          className="navitem"
+        >
+          Contact
+        </NavLink>
+      </div>
+      <Routes>
+        <Route path="/home" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
     </div>
   );
 }
